@@ -17,7 +17,7 @@ server.use(cors());
 server.use(bodyParser.json({type : '*/*'}));
 server.use(restify.queryParser());
 router(server);
-const port = process.env.PORT || 3090;
+const port = process.env.PORT || 5000;
 
 //const server = http.createServer(app);
 server.listen(port);

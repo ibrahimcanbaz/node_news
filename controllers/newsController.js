@@ -1,5 +1,6 @@
 const Iller = require('../models/iller');
 const News = require('../models/news');
+const AppUser = require('../models/appUsers');
 const Profiles = require('../models/profiles');
 
 //#############################################################
@@ -18,6 +19,27 @@ exports.putNews = function(req,res,err){
   });
 
   news.save(function(err){
+    if(err){return next(err)};
+    console.log('Saved successfully');
+    res.send({message : "Saved wit zero error.."});
+  })
+}
+//#############################################################
+// Put App User
+//
+//############################################################
+
+exports.putAppUser = function(req,res,err){
+  console.log(req.body);
+  const token =req.body.token;
+  const locale = req.body.locale;
+
+  const appUser = new AppUser({
+    token : token,
+    locale : locale
+  });
+
+  appUser.save(function(err){
     if(err){return next(err)};
     console.log('Saved successfully');
     res.send({message : "Saved wit zero error.."});

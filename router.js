@@ -9,6 +9,7 @@ module.exports = function(app){
 app.post('/putNews', NewsService.putNews);
 app.get('/getNews', NewsService.getNews);
 app.get('/getIller', NewsService.getIller);
+app.post('/putAppUser', NewsService.putAppUser);
 //app.post('/putIl', NewsService.putIl);
 app.get('/getIlceler', NewsService.getIlceler);
 
