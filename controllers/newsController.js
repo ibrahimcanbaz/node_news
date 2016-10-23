@@ -30,20 +30,34 @@ exports.putNews = function(req,res,err){
 //############################################################
 
 exports.putAppUser = function(req,res,err){
-  console.log(req.body);
+  //console.log(req.body);
   const token =req.body.token;
   const locale = req.body.locale;
+  const enterDate = req.body.enterDate;
 
   const appUser = new AppUser({
     token : token,
-    locale : locale
-  });
+    locale : locale,
+    enterDate : enterDate,
 
-  appUser.save(function(err){
+  });
+ 
+    AppUser.find({ 'token': token }, function (err, doc) {
+    console.log(doc.length)
+    
+    if (doc.length != 0){
+    AppUser.findOneAndUpdate({token:token}, req.body, function (err, place) {
+      res.send(place);
+    });
+  } else {
+    appUser.save(function(err){
     if(err){return next(err)};
-    console.log('Saved successfully');
-    res.send({message : "Saved wit zero error.."});
+      res.send({message : "Saved wit zero error.."});
   })
+  }
+  });
+  
+  
 }
 
 //#############################################################
@@ -102,7 +116,7 @@ exports.getIlceler = function(req,res,err){
 
 const ilid = req.query.il;
 
-  
+
   Iller.find({"plaka" : ilid},function(err,news){
     if(err){return next(err)};
 

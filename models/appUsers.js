@@ -16,9 +16,9 @@ const Schema = mongoose.Schema;
 
 
       //Create the model claas
-          const ModelClass = mongoose.model('appsuers',AppUsers);
+      const AppUserClass = mongoose.model('appsuers',AppUsers);
 
 
 
       //export the model
-      module.exports = ModelClass;
+      module.exports = AppUserClass;
