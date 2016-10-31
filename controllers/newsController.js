@@ -29,7 +29,7 @@ exports.putNews = function(req,res,err){
 //
 //############################################################
 
-exports.putAppUser = function(req,res,err){
+exports.putAppUser = function(req,res,next){
   //console.log(req.body);
   const token =req.body.token;
   const locale = req.body.locale;
@@ -45,7 +45,7 @@ exports.putAppUser = function(req,res,err){
   });
  
     AppUser.find({ 'token': token }, function (err, doc) {
-    console.log(doc.length)
+   
     
     if (typeof doc != 'undefined' && doc.length != 0){
     AppUser.findOneAndUpdate({token:token}, req.body, function (err, place) {
