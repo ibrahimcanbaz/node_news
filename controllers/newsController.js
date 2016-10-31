@@ -47,7 +47,7 @@ exports.putAppUser = function(req,res,err){
     AppUser.find({ 'token': token }, function (err, doc) {
     console.log(doc.length)
     
-    if (doc.length != 0){
+    if (typeof doc !== 'undefined' && doc.length != 0){
     AppUser.findOneAndUpdate({token:token}, req.body, function (err, place) {
       res.send(place);
     });
