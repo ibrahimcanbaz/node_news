@@ -33,11 +33,13 @@ exports.putAppUser = function(req,res,err){
   //console.log(req.body);
   const token =req.body.token;
   const locale = req.body.locale;
+  const version = req.body.version;
   const enterDate = req.body.enterDate;
 
   const appUser = new AppUser({
     token : token,
     locale : locale,
+    version : version,
     enterDate : enterDate,
 
   });

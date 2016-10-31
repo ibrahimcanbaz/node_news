@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
     const AppUsers = new Schema({
         token : {type : String },
         locale : {type : String },
+        version : {type : String },
         enterDate : { type: Date, default: Date.now }
       });
 
