@@ -1,5 +1,6 @@
 const Iller = require('../models/iller');
 const News = require('../models/news');
+const Wishes = require('../models/wishes');
 const AppUser = require('../models/appUsers');
 const Profiles = require('../models/profiles');
 
@@ -21,6 +22,26 @@ exports.putNews = function(req,res,err){
   news.save(function(err){
     if(err){return next(err)};
     console.log('Saved successfully');
+    res.send({message : "Saved wit zero error.."});
+  })
+}
+//#############################################################
+// Send Wishes
+//
+//############################################################
+
+exports.sendWishes = function(req,res,next){
+  const token =req.body.token;
+  const wish = req.body.wishes;
+
+  const wishes = new Wishes({
+    token : token,
+    wish : wish
+  });
+
+  wishes.save(function(err){
+    if(err){return next(err)};
+   
     res.send({message : "Saved wit zero error.."});
   })
 }
